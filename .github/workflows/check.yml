@@ -1,0 +1,28 @@
+name: Check casks
+
+# Audits and installs every cask after each push, so a broken bump shows up here
+# before users hit it.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lull:
+    runs-on: macos-26
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+      HOMEBREW_NO_INSTALL_CLEANUP: 1
+    steps:
+      - name: Tap this commit
+        run: brew tap roberts-pumpurs/tap "https://github.com/${{ github.repository }}"
+      - name: Audit
+        run: brew audit --cask --strict --online roberts-pumpurs/tap/lull
+      - name: Install
+        run: brew install --cask roberts-pumpurs/tap/lull
+      - name: Gatekeeper
+        run: |
+          xattr -p com.apple.quarantine /Applications/Lull.app
+          spctl --assess --type execute --verbose=2 /Applications/Lull.app
+      - name: Uninstall
+        run: brew uninstall --cask lull
