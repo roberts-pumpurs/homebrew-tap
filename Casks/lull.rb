@@ -2,14 +2,15 @@ cask "lull" do
   version "0.1.10"
   sha256 "94f5ab84206be54c2f104f125a28c7e94bde785722b993a3691c318e846af5a9"
 
-  url "https://github.com/roberts-pumpurs/lull/releases/download/v#{version}/lull-#{version}.dmg"
+  url "https://github.com/roberts-pumpurs/homebrew-tap/releases/download/lull-v#{version}/lull-#{version}.dmg"
   name "Lull"
   desc "Menu bar app that makes you take breaks"
-  homepage "https://github.com/roberts-pumpurs/lull"
+  homepage "https://github.com/roberts-pumpurs/homebrew-tap"
 
   livecheck do
     url :url
-    strategy :github_latest
+    regex(/^lull-v?(\d+(?:\.\d+)+)$/i)
+    strategy :github_releases
   end
 
   depends_on macos: ">= :tahoe"
