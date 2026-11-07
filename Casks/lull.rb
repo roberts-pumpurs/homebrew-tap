@@ -1,6 +1,6 @@
 cask "lull" do
-  version "0.1.11"
-  sha256 "b075a3653ee05fb85664abf1d52ff8d7939825a2a4d0be30f8be9d07fdd8ec0e"
+  version "0.1.12"
+  sha256 "4495479c4c9c7ee10b29f3dc39f63fa8762a3cc24dc8b627efef33b7b3ab6653"
 
   url "https://github.com/roberts-pumpurs/homebrew-tap/releases/download/lull-v#{version}/lull-#{version}.dmg"
   name "Lull"
