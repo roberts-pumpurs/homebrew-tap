@@ -1,6 +1,6 @@
 cask "lull" do
-  version "0.1.12"
-  sha256 "4495479c4c9c7ee10b29f3dc39f63fa8762a3cc24dc8b627efef33b7b3ab6653"
+  version "0.1.13"
+  sha256 "c1265f9242bd0b7f5764fa9928b71f8248e8da52824de47c2f3615f946d0afc0"
 
   url "https://github.com/roberts-pumpurs/homebrew-tap/releases/download/lull-v#{version}/lull-#{version}.dmg"
   name "Lull"
@@ -13,6 +13,7 @@ cask "lull" do
     strategy :github_releases
   end
 
+  auto_updates true
   depends_on macos: ">= :tahoe"
 
   app "Lull.app"
